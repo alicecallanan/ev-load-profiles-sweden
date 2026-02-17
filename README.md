@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18670475.svg)](https://doi.org/10.5281/zenodo.18670475)
+
 # EV-Grid Impact: Synthetic Charging Profile Generator
 
 This repository provides high-resolution, synthetic Electric Vehicle (EV) charging profiles for Sweden's Demographic Statistical Areas (DeSO). It also includes the data-driven probabilistic framework used to generate these profiles.
