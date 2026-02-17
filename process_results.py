@@ -10,7 +10,7 @@ import os
 import matplotlib.pyplot as plt
 
 # Identify the result file to process
-run_id = 'smart_full_electrification'  # Match this to your run_id in main.py
+run_id = 'uncoord_full_electrification'  # Match this to your run_id in main.py
 input_file = os.path.join('results', f'{run_id}_full_timeseries.csv')
 
 if not os.path.exists(input_file):
