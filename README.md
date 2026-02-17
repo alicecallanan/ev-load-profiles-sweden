@@ -48,17 +48,9 @@ The model uses a **Monte Carlo** approach to transform travel statistics into po
 ### Step 2: Process results and generate stats/daily curves
 `python process_results.py`
 
-## Getting Started
 
-### 1. Requirements
-Ensure you have the following Python libraries installed:
-
-```bash
-pip install pandas numpy scipy matplotlib
-```
-
-### 2. Configuration
-Open main.py to adjust the following:
+## Configuration
+The following attributes can be varied to run different scenarios:
 
 **share**: Share of car fleet assumed electric (default is 1.0)
 
@@ -77,6 +69,11 @@ Outputs are saved in the /results folder:
 
 **daily_curve_run_[run_id].csv**: A typical 24-hour load profile for each zone.
 
+## Requirements
+Ensure you have the following Python libraries installed:
 
+```bash
+pip install pandas numpy scipy matplotlib
+```
 
 
