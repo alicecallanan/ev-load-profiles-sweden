@@ -17,6 +17,9 @@ If you utilize this code or the generated profiles in your research, please cite
 * **`generate_profiles.py`**: The primary simulation engine. It models daily State of Charge (SOC) fluctuations and aggregates results into hourly time-series profiles.
 * **`functions.py`**: Contains core modeling logic, including vehicle specifications (`get_ev_models`) and charging decision triggers (`update_charging`).
 * **`public_charger_logic.py`**: A preprocessing tool that calculates geographic probability distributions for public charging based on traffic volume (AADT) and urban/rural weighting.
+* **`process_results.py`**: Reads the generated load profiles and computes:
+    * **Statistics per zone**: Mean, maximum, standard deviation, and percentiles ($25^{th}, 50^{th}, 75^{th}, 95^{th}$).
+    * **Typical Daily Load Curve**: Aggregates the simulation data into a 24-hour representative profile for each DeSO.
 
 ### Input Data (`/Data`)
 The simulation relies on curated datasets to reflect realistic Swedish travel and charging behaviors. Please note that the datasets included in this repository were collected in 2023-2025 when the study was performed.
@@ -26,14 +29,7 @@ The simulation relies on curated datasets to reflect realistic Swedish travel an
 * **`Home_starts_smart.csv` / `Home_starts_uncoord.csv`**: Temporal arrival distributions for different charging scenarios.
 * **`public_duration.csv`, `public_power.csv`, `public_starts.csv`**: Empirical distributions for public charging events.
 
-### Analysis Scripts
-* **`process_results.py`**: Reads the generated load profiles and computes:
-    * **Statistics per zone**: Mean, maximum, standard deviation, and percentiles ($25^{th}, 50^{th}, 75^{th}, 95^{th}$).
-    * **Typical Daily Load Curve**: Aggregates the simulation data into a 24-hour representative profile for each DeSO.
 
-
-   
-This will generate stats_run_[id].csv and daily_curve_run_[id].csv in the /results folder.
 ---
 
 ## ⚙️ Methodology
@@ -44,6 +40,13 @@ The model uses a **Monte Carlo** approach to transform travel statistics into po
 3. **Aggregation**: The script outputs power demand in **kW** per DeSO area.
 
 ---
+
+## Usage
+# Step 1: Generate the profiles
+python generate_profiles.py
+
+# Step 2: Process results and generate stats/daily curves
+python process_results.py
 
 ## Getting Started
 
@@ -65,11 +68,15 @@ Open main.py to adjust the following:
 
 **run_id**: Unique identifier for the output file.
 
-## 3. Usage
-1. **Generate Profiles**: `python generate_profiles.py`
-2. **Process Data**: `python process_results.py`
-
 ## Results
-Outputs are saved in the /results folder as car_profile_[run_id].csv. Each column represents a DeSO geographic zone, and each row represents one hour of the simulation.
+Outputs are saved in the /results folder:
+
+**car_profile_[run_id].csv**: The raw hourly power demand profile. Each column represents a DeSO geographic zone.
+
+**stats_run_[run_id].csv**: Summary statistics (mean, max, std, percentiles) for each zone.
+
+**daily_curve_run_[run_id].csv**: A typical 24-hour load profile for each zone.
+
+
 
 
