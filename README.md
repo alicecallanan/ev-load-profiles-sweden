@@ -5,9 +5,9 @@ This repository provides high-resolution, synthetic Electric Vehicle (EV) chargi
 ## Data Access & DOI
 The full dataset (including multi-year simulations and aggregate statistics) is archived on Zenodo for long-term persistence and formal citation.
 
-Zenodo Repository: [Link to your Zenodo Upload]
+Zenodo Repository: https://zenodo.org/records/18670475
 
-Dataset DOI: 10.5281/zenodo.XXXXXXX (Update once published)
+Dataset DOI: https://doi.org/10.5281/zenodo.18670475
 
 License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 
