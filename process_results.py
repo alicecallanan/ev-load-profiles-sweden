@@ -10,7 +10,7 @@ import os
 import matplotlib.pyplot as plt
 
 # Identify the result file to process
-run_id = 'uncoord_full_electrification'  # Match this to your run_id in main.py
+run_id = 'smart_full_electrification'  # Match this to your run_id in main.py
 input_file = os.path.join('results', f'{run_id}_full_timeseries.csv')
 
 if not os.path.exists(input_file):
@@ -49,3 +49,38 @@ else:
     plt.grid(True)
     plt.savefig(os.path.join('results', f'{run_id}_daily_plot.png'))
     print("Summary plot saved to results folder.")
+    
+    #%%
+    # 4. Optional: Select DeSO area to plot
+    
+    deso = '1281C1560'
+    
+    plt.rc('xtick', labelsize='xx-large') 
+    plt.rc('ytick', labelsize='xx-large') 
+
+    # Use a clean style
+    plt.style.use('seaborn-v0_8-whitegrid') # or 'ggplot'
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    # Plot the main curve with a thicker line
+    ax.plot(daily_curve.index, daily_curve[deso], 
+            color='#2E86C1', linewidth=3, label='Average Demand')
+    
+    # Formatting for impact
+    ax.set_title(f'EV Charging Demand Profile: Zone {deso} (Brunnshög, Lund)', fontsize=20, fontweight='bold', pad=20)
+    ax.set_xlabel('Hour of the Day', fontsize=20)
+    ax.set_ylabel('Power Demand [kW]', fontsize=20)
+    
+    # Set x-ticks to show every 2 hours clearly
+    ax.set_xticks(range(0, 24, 2))
+    ax.set_xlim(0, 23)
+    
+    # Add a subtle "Lund University" or "Research by [Your Name]" watermark
+    ax.text(0.99, 0.01, 'Data: Callanan et al. (2025)', 
+            transform=ax.transAxes, color='gray', alpha=0.5,
+            ha='right', va='bottom', fontsize=10)
+    
+    plt.tight_layout()  
+    plt.savefig(os.path.join('results', f'{run_id}_selected.png'))
+    plt.show()
+    
