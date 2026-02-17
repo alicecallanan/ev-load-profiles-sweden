@@ -19,14 +19,23 @@ Callanan, A., Samuelsson, O., & Marquez Fernandez, F. J. (2025). "A data-driven 
 
 ---
 
-## Available Data Results
-The /results directory (and the Zenodo archive) contains:
+## Data Description
+The provided CSV files in the `/results` directory (and the Zenodo archive) are organized as follows:
 
-**Hourly Load Profiles**: Full power demand time series in $kW$ for each DeSO zone.
+### 1. Hourly Load Profiles (`[run_id]_full_timeseries.csv`)
+* **Index**: Timestamps representing hourly intervals.
+* **Columns**: Each column represents a specific Swedish **DeSO zone**.
+* **Values**: Power demand in **kilowatts (kW)**.
+* **Temporal Scope**: One full year of data (after a 10-day burn-in period).
 
-**Statistical Summaries**: Mean, max, standard deviation, and percentiles ($25^{th}-95^{th}$) per zone.
+### 2. Statistical Summaries (`[run_id]_stats.csv`)
+Comprehensive statistics per DeSO zone, including:
+* **Mean/Max**: Average and peak power demand.
+* **Standard Deviation**: Variability of the load.
+* **Percentiles**: $25^{th}, 50^{th}$ (Median), $75^{th},$ and $95^{th}$ percentile demand levels.
 
-**Typical Daily Curves**: 24-hour representative profiles for "Smart" and "Uncoordinated" charging scenarios.
+### 3. Typical Daily Curves (`[run_id]_daily_curve.csv`)
+A representative 24-hour profile for each zone, useful for grid impact modeling and capacity planning.
 
 ## Generation Code
 For researchers wishing to replicate or adapt the results, the following Python framework is provided:
@@ -84,6 +93,8 @@ Outputs are saved in the /results folder:
 
 ### Step 2: Process results and generate stats/daily curves
 `python process_results.py`
+
+
 ## Requirements
 Ensure you have the following Python libraries installed:
 
