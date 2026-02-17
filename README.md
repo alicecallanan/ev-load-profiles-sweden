@@ -18,6 +18,7 @@ Callanan, A., Samuelsson, O., & Marquez Fernandez, F. J. (2025). "A data-driven 
 
 ## Available Data Results
 The /results directory (and the Zenodo archive) contains:
+
 **Hourly Load Profiles**: Full power demand time series in $kW$ for each DeSO zone.
 
 **Statistical Summaries**: Mean, max, standard deviation, and percentiles ($25^{th}-95^{th}$) per zone.
