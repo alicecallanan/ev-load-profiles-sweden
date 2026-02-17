@@ -39,6 +39,12 @@ Comprehensive statistics per DeSO zone, including:
 ### 3. Typical Daily Curves (`[run_id]_daily_curve.csv`)
 A representative 24-hour profile for each zone, useful for grid impact modeling and capacity planning.
 
+### 4. Spatial Data (`/GIS`)
+To facilitate geographic analysis, the repository includes the DeSO boundaries used in this study:
+* **Format**: Shapefile (.shp) / GeoJSON.
+* **Coordinate System**: SWEREF99 TM (EPSG:3006).
+* **Linkage**: The `deso_id` attribute in the spatial data corresponds directly to the column headers in the load profile CSVs.
+
 ## Generation Code
 For researchers wishing to replicate or adapt the results, the following Python framework is provided:
 
