@@ -42,11 +42,11 @@ The model uses a **Monte Carlo** approach to transform travel statistics into po
 ---
 
 ## Usage
-# Step 1: Generate the profiles
-python generate_profiles.py
+### Step 1: Generate the profiles
+`python generate_profiles.py`
 
-# Step 2: Process results and generate stats/daily curves
-python process_results.py
+### Step 2: Process results and generate stats/daily curves
+`python process_results.py`
 
 ## Getting Started
 
