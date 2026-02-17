@@ -28,9 +28,9 @@ share=1
 # Select number of days simulated
 N=375 # One year 
 # Select case: 'smart" or "uncoord"
-case='smart'
+case='uncoord'
 # Give your run an ID
-run_id='original_full_electrification'
+run_id='uncoord_full_electrification'
 
 # Read data sources
 deso_travel = pd.read_csv(os.path.join('Data', 'deso_traveldata.csv'), index_col=3)             # The raw data is collected from SCB and curated to match a DeSO model resolution
@@ -138,7 +138,7 @@ df_profile=pd.DataFrame(full_profile)
 df_profile.columns=deso_travel.index      
 df_profile=df_profile.iloc[240:,:]          #Remove first 10 days due to fluctuations
     
-file_path = os.path.join('results', f'car_profile_{run_id}.csv')
+file_path = os.path.join('results', f'{run_id}_full_timeseries.csv')
 df_profile.to_csv(file_path, index=False)
 
 # Check the time it took for the script to run

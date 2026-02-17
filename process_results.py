@@ -10,8 +10,8 @@ import os
 import matplotlib.pyplot as plt
 
 # Identify the result file to process
-run_id = 'original_full_electrification'  # Match this to your run_id in main.py
-input_file = os.path.join('results', f'car_profile_{run_id}.csv')
+run_id = 'smart_full_electrification'  # Match this to your run_id in main.py
+input_file = os.path.join('results', f'{run_id}_full_timeseries.csv')
 
 if not os.path.exists(input_file):
     print(f"Error: {input_file} not found. Run generate_profiles.py first.")
@@ -25,7 +25,7 @@ else:
     stats = stats[['mean', 'max', '25%', '50%', '75%', '95%', 'std']]
     
     # Save statistics to CSV
-    stats_path = os.path.join('results', f'stats_run_{run_id}.csv')
+    stats_path = os.path.join('results', f'{run_id}_stats.csv')
     stats.to_csv(stats_path)
     print(f"Statistics saved to {stats_path}")
 
@@ -36,7 +36,7 @@ else:
     daily_curve = df.groupby('Hour').mean()
     
     # Save daily curve to CSV
-    curve_path = os.path.join('results', f'daily_curve_run_{run_id}.csv')
+    curve_path = os.path.join('results', f'{run_id}_dailycurve.csv')
     daily_curve.to_csv(curve_path)
     print(f"Typical daily curve saved to {curve_path}")
 
@@ -47,5 +47,5 @@ else:
     plt.xlabel('Hour of Day')
     plt.ylabel('Average Power [kW]')
     plt.grid(True)
-    plt.savefig(os.path.join('results', f'plot_run_{run_id}.png'))
+    plt.savefig(os.path.join('results', f'{run_id}_dailyplot.png'))
     print("Summary plot saved to results folder.")
