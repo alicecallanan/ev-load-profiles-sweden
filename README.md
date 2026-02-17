@@ -14,7 +14,7 @@ If you utilize this code or the generated profiles in your research, please cite
 ## 🛠 Repository Structure
 
 ### Python Scripts
-* **`main.py`**: The primary simulation engine. It models daily State of Charge (SOC) fluctuations and aggregates results into hourly time-series profiles.
+* **`generate_profiles.py`**: The primary simulation engine. It models daily State of Charge (SOC) fluctuations and aggregates results into hourly time-series profiles.
 * **`functions.py`**: Contains core modeling logic, including vehicle specifications (`get_ev_models`) and charging decision triggers (`update_charging`).
 * **`public_charger_logic.py`**: A preprocessing tool that calculates geographic probability distributions for public charging based on traffic volume (AADT) and urban/rural weighting.
 
