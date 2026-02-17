@@ -30,7 +30,7 @@ N=375 # One year
 # Select case: 'smart" or "uncoord"
 case='smart'
 # Give your run an ID
-run_id=2
+run_id='original_full_electrification'
 
 # Read data sources
 deso_travel = pd.read_csv(os.path.join('Data', 'deso_traveldata.csv'), index_col=3)             # The raw data is collected from SCB and curated to match a DeSO model resolution
