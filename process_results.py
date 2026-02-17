@@ -10,7 +10,7 @@ import os
 import matplotlib.pyplot as plt
 
 # Identify the result file to process
-run_id = 2  # Match this to your run_id in main.py
+run_id = 'original_full_electrification'  # Match this to your run_id in main.py
 input_file = os.path.join('results', f'car_profile_{run_id}.csv')
 
 if not os.path.exists(input_file):
@@ -43,7 +43,7 @@ else:
     # 3. Optional: Plot the average aggregate load for the whole region
     plt.figure(figsize=(10, 6))
     plt.plot(daily_curve.index, daily_curve.mean(axis=1), label='Mean Aggregate Load')
-    plt.title(f'Typical Daily EV Charging Profile (Run {run_id})')
+    plt.title(f'Typical Daily EV Charging Profile ({run_id})')
     plt.xlabel('Hour of Day')
     plt.ylabel('Average Power [kW]')
     plt.grid(True)
