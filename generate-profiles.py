@@ -23,6 +23,8 @@ start=time.time()
 if not os.path.exists('results'):
     os.makedirs('results')
 
+# Select the share of the cars that are electric
+share=1
 # Select number of days simulated
 N=375 # One year 
 # Select case: 'smart" or "uncoord"
@@ -60,7 +62,7 @@ for zone,row in deso_travel.transpose().iloc[:,:].items():
     print(f"DeSo {name} pending")
     
     # Collect data
-    nbr_cars=int(row['Antal Bilar'])                                        # Number of registered cars in DeSO
+    nbr_cars=int(row['Antal Bilar'])*share                                  # Number of registered cars in DeSO times the electrification share
     all_cars=np.random.choice(list(ev_models.values()), size=nbr_cars)      # Randomly select car models for all registered cars
     km,kmstd=row['Travel (km)'],row['Travel +-']                            # Average and standard deviation of kilometers travelled per day
     batteries=[el['Battery size'] for el in all_cars]                       # Give each car a battery size according to model stats
@@ -129,10 +131,11 @@ for zone,row in deso_travel.transpose().iloc[:,:].items():
                 SOC[i] = min(100, SOC[i] + ((charging_power * duration) / batteries[i] * 100))
     zonenbr += 1        # Update iteration tracker
     # full_profile[:,zonenbr]+=charging_profile
-    
+
+#%%    
 # Convert to dataframe
 df_profile=pd.DataFrame(full_profile)
-df_profile.columns=deso_travel['Zon']       
+df_profile.columns=deso_travel.index      
 df_profile=df_profile.iloc[240:,:]          #Remove first 10 days due to fluctuations
     
 file_path = os.path.join('results', f'car_profile_{run_id}.csv')
