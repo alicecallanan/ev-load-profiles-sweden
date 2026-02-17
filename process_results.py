@@ -10,7 +10,7 @@ import os
 import matplotlib.pyplot as plt
 
 # Identify the result file to process
-run_id = 'smart_full_electrification'
+run_id = 'uncoord_full_electrification'
 input_file = os.path.join('results', f'{run_id}_full_timeseries.csv')
 
 # Load metadata; index_col=3 corresponds to the 'Zon' (DeSO ID) column in your image
