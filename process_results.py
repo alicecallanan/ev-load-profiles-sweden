@@ -10,8 +10,11 @@ import os
 import matplotlib.pyplot as plt
 
 # Identify the result file to process
-run_id = 'smart_full_electrification'  # Match this to your run_id in main.py
+run_id = 'smart_full_electrification'
 input_file = os.path.join('results', f'{run_id}_full_timeseries.csv')
+
+# Load metadata; index_col=3 corresponds to the 'Zon' (DeSO ID) column in your image
+deso_travel = pd.read_csv(os.path.join('Data', 'deso_traveldata.csv'), index_col=3)
 
 if not os.path.exists(input_file):
     print(f"Error: {input_file} not found. Run generate_profiles.py first.")
@@ -20,14 +23,22 @@ else:
     df = pd.read_csv(input_file)
     
     # 1. Calculate Statistics for each DeSO
-    # (Average, Max, Percentiles 25/50/75/95, and Std Dev)
+    # describe().transpose() puts DeSO IDs into the index
     stats = df.describe(percentiles=[.25, .50, .75, .95]).transpose()
     stats = stats[['mean', 'max', '25%', '50%', '75%', '95%', 'std']]
     
-    # Save statistics to CSV
+    # Save stats data to CSV
     stats_path = os.path.join('results', f'{run_id}_stats.csv')
     stats.to_csv(stats_path)
-    print(f"Statistics saved to {stats_path}")
+    
+    # 2. Merge stats with deso_travel metadata
+    # We join on the index since both share the DeSO IDs as row labels
+    combined_data = deso_travel.join(stats, how='inner')
+    
+    # Save combined data to CSV
+    combined_path = os.path.join('results', f'{run_id}_stats_with_deso.csv')
+    combined_data.to_csv(combined_path)
+    print(f"Combined data saved to {combined_path}")
 
     # 2. Calculate Typical Daily Load Curve
     # We group by the hour of the day (0-23)
@@ -74,11 +85,6 @@ else:
     # Set x-ticks to show every 2 hours clearly
     ax.set_xticks(range(0, 24, 2))
     ax.set_xlim(0, 23)
-    
-    # Add a subtle "Lund University" or "Research by [Your Name]" watermark
-    ax.text(0.99, 0.01, 'Data: Callanan et al. (2025)', 
-            transform=ax.transAxes, color='gray', alpha=0.5,
-            ha='right', va='bottom', fontsize=10)
     
     plt.tight_layout()  
     plt.savefig(os.path.join('results', f'{run_id}_selected.png'))
