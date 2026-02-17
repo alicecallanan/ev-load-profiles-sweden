@@ -1,25 +1,36 @@
 # EV-Grid Impact: Synthetic Charging Profile Generator
 
-This repository contains the Python implementation for generating large-scale, high-resolution Electric Vehicle (EV) charging profiles. This framework was developed as part of the research published in the *International Journal of Electrical Power and Energy Systems*.
+This repository provides high-resolution, synthetic Electric Vehicle (EV) charging profiles for Sweden's Demographic Statistical Areas (DeSO). It also includes the data-driven probabilistic framework used to generate these profiles.
 
-## 📄 Associated Publication
-If you utilize this code or the generated profiles in your research, please cite:
+## Data Access & DOI
+The full dataset (including multi-year simulations and aggregate statistics) is archived on Zenodo for long-term persistence and formal citation.
 
-> **Callanan, A., Samuelsson, O., & Marquez Fernandez, F. J.** (2025). "A data-driven probabilistic framework for estimating grid impacts of EV charging at scale." *International Journal of Electrical Power and Energy Systems*, 172, 111204. [https://doi.org/10.1016/j.ijepes.2025.111204](https://doi.org/10.1016/j.ijepes.2025.111204)
+Zenodo Repository: [Link to your Zenodo Upload]
 
-*Note: While the grid impact analysis in the paper involves confidential network data, this repository provides the full probabilistic engine and input datasets required to replicate the EV load profile generation.*
+Dataset DOI: 10.5281/zenodo.XXXXXXX (Update once published)
 
----
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-## 🛠 Repository Structure
+
+## Available Data Results
+The /results directory (and the Zenodo archive) contains:
+**Hourly Load Profiles**: Full power demand time series in $kW$ for each DeSO zone.
+
+**Statistical Summaries**: Mean, max, standard deviation, and percentiles ($25^{th}-95^{th}$) per zone.
+
+**Typical Daily Curves**: 24-hour representative profiles for "Smart" and "Uncoordinated" charging scenarios.
+
+## Generation Code
 
 ### Python Scripts
-* **`generate_profiles.py`**: The primary simulation engine. It models daily State of Charge (SOC) fluctuations and aggregates results into hourly time-series profiles.
-* **`functions.py`**: Contains core modeling logic, including vehicle specifications (`get_ev_models`) and charging decision triggers (`update_charging`).
-* **`public_charger_logic.py`**: A preprocessing tool that calculates geographic probability distributions for public charging based on traffic volume (AADT) and urban/rural weighting.
-* **`process_results.py`**: Reads the generated load profiles and computes:
-    * **Statistics per zone**: Mean, maximum, standard deviation, and percentiles ($25^{th}, 50^{th}, 75^{th}, 95^{th}$).
-    * **Typical Daily Load Curve**: Aggregates the simulation data into a 24-hour representative profile for each DeSO.
+For researchers wishing to replicate or adapt the results, the following Python framework is provided:
+
+* **generate_profiles.py**: The Monte Carlo engine simulating driving and SOC patterns.
+
+* **public_charger_logic.py**: Calculates geographic charging probabilities based on traffic volume (AADT).
+
+* **process_results.py**: Computes the statistics and daily curves from raw simulation output.
+
 
 ### Input Data (`/Data`)
 The simulation relies on curated datasets to reflect realistic Swedish travel and charging behaviors. Please note that the datasets included in this repository were collected in 2023-2025 when the study was performed.
@@ -32,7 +43,7 @@ The simulation relies on curated datasets to reflect realistic Swedish travel an
 
 ---
 
-## ⚙️ Methodology
+## Methodology
 The model uses a **Monte Carlo** approach to transform travel statistics into power demand.
 
 1. **Public Charger Logic**: The framework assigns charging locations by balancing traffic volume (AADT, Annual Average Daily Traffic) with urban weights (65% share for cities), split between Large and Medium cities.
@@ -59,6 +70,7 @@ The following attributes can be varied to run different scenarios:
 **case**: Set to 'smart' or 'uncoord' to select the charging strategy.
 
 **run_id**: Unique identifier for the output file.
+
 
 ## Results
 Outputs are saved in the /results folder:
