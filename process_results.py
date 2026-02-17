@@ -36,7 +36,7 @@ else:
     daily_curve = df.groupby('Hour').mean()
     
     # Save daily curve to CSV
-    curve_path = os.path.join('results', f'{run_id}_dailycurve.csv')
+    curve_path = os.path.join('results', f'{run_id}_daily_curve.csv')
     daily_curve.to_csv(curve_path)
     print(f"Typical daily curve saved to {curve_path}")
 
@@ -47,5 +47,5 @@ else:
     plt.xlabel('Hour of Day')
     plt.ylabel('Average Power [kW]')
     plt.grid(True)
-    plt.savefig(os.path.join('results', f'{run_id}_dailyplot.png'))
+    plt.savefig(os.path.join('results', f'{run_id}_daily_plot.png'))
     print("Summary plot saved to results folder.")
