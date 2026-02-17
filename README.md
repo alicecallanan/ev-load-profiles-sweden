@@ -26,6 +26,14 @@ The simulation relies on curated datasets to reflect realistic Swedish travel an
 * **`Home_starts_smart.csv` / `Home_starts_uncoord.csv`**: Temporal arrival distributions for different charging scenarios.
 * **`public_duration.csv`, `public_power.csv`, `public_starts.csv`**: Empirical distributions for public charging events.
 
+### Analysis Scripts
+* **`process_results.py`**: Reads the generated load profiles and computes:
+    * **Statistics per zone**: Mean, maximum, standard deviation, and percentiles ($25^{th}, 50^{th}, 75^{th}, 95^{th}$).
+    * **Typical Daily Load Curve**: Aggregates the simulation data into a 24-hour representative profile for each DeSO.
+
+
+   
+This will generate stats_run_[id].csv and daily_curve_run_[id].csv in the /results folder.
 ---
 
 ## ⚙️ Methodology
@@ -57,10 +65,9 @@ Open main.py to adjust the following:
 
 **run_id**: Unique identifier for the output file.
 
-### 3. Execution
-```bash
-python generate_profiles.py
-```
+## 3. Usage
+1. **Generate Profiles**: `python generate_profiles.py`
+2. **Process Data**: `python process_results.py`
 
 ## Results
 Outputs are saved in the /results folder as car_profile_[run_id].csv. Each column represents a DeSO geographic zone, and each row represents one hour of the simulation.
