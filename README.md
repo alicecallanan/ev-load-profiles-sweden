@@ -50,13 +50,16 @@ pip install pandas numpy scipy matplotlib
 Open main.py to adjust the following:
 
 share: Share of car fleet assumed electric (default is 1.0)
+
 N: Number of days to simulate (default is 375).
+
 case: Set to 'smart' or 'uncoord' to select the charging strategy.
+
 run_id: Unique identifier for the output file.
 
 ### 3. Execution
 ```bash
-python main.py
+python generate_profiles.py
 ```
 
 ## Results
