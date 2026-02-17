@@ -49,13 +49,13 @@ pip install pandas numpy scipy matplotlib
 ### 2. Configuration
 Open main.py to adjust the following:
 
-share: Share of car fleet assumed electric (default is 1.0)
+**share**: Share of car fleet assumed electric (default is 1.0)
 
-N: Number of days to simulate (default is 375).
+**N**: Number of days to simulate (default is 375).
 
-case: Set to 'smart' or 'uncoord' to select the charging strategy.
+**case**: Set to 'smart' or 'uncoord' to select the charging strategy.
 
-run_id: Unique identifier for the output file.
+**run_id**: Unique identifier for the output file.
 
 ### 3. Execution
 ```bash
@@ -66,5 +66,3 @@ python generate_profiles.py
 Outputs are saved in the /results folder as car_profile_[run_id].csv. Each column represents a DeSO geographic zone, and each row represents one hour of the simulation.
 
 
-# Note
-This README was drafted with the assistance of AI and refined by the authors to ensure technical accuracy.
