@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18670475.svg)](https://doi.org/10.5281/zenodo.18670475)
+
 # EV-Grid Impact: Synthetic Charging Profile Generator
 
 This repository provides high-resolution, synthetic Electric Vehicle (EV) charging profiles for Sweden's Demographic Statistical Areas (DeSO). It also includes the data-driven probabilistic framework used to generate these profiles.
@@ -5,9 +7,9 @@ This repository provides high-resolution, synthetic Electric Vehicle (EV) chargi
 ## Data Access & DOI
 The full dataset (including multi-year simulations and aggregate statistics) is archived on Zenodo for long-term persistence and formal citation.
 
-Zenodo Repository: [Link to your Zenodo Upload]
+Zenodo Repository: https://zenodo.org/records/18670475
 
-Dataset DOI: 10.5281/zenodo.XXXXXXX (Update once published)
+Dataset DOI: https://doi.org/10.5281/zenodo.18670475
 
 License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 
@@ -36,6 +38,12 @@ Comprehensive statistics per DeSO zone, including:
 
 ### 3. Typical Daily Curves (`[run_id]_daily_curve.csv`)
 A representative 24-hour profile for each zone, useful for grid impact modeling and capacity planning.
+
+### 4. Spatial Data (`/GIS`)
+To facilitate geographic analysis, the repository includes the DeSO boundaries used in this study:
+* **Format**: Shapefile (.shp) / GeoJSON.
+* **Coordinate System**: SWEREF99 TM (EPSG:3006).
+* **Linkage**: The `deso_id` attribute in the spatial data corresponds directly to the column headers in the load profile CSVs.
 
 ## Generation Code
 For researchers wishing to replicate or adapt the results, the following Python framework is provided:
