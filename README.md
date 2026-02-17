@@ -11,6 +11,10 @@ Dataset DOI: 10.5281/zenodo.XXXXXXX (Update once published)
 
 License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 
+## Associated Publication
+The methodology behind these profiles is detailed in:
+
+Callanan, A., Samuelsson, O., & Marquez Fernandez, F. J. (2025). "A data-driven probabilistic framework for estimating grid impacts of EV charging at scale." International Journal of Electrical Power and Energy Systems, 172, 111204. https://doi.org/10.1016/j.ijepes.2025.111204
 
 ## Available Data Results
 The /results directory (and the Zenodo archive) contains:
@@ -39,7 +43,7 @@ The model uses a **Monte Carlo** approach to transform travel statistics into po
 2. **Simulation**: For each DeSO zone, the model simulates daily driving, energy consumption, and charging decisions for every registered vehicle.
 3. **Aggregation**: The script outputs power demand in **kW** per DeSO area.
 
-# Input Data (`/Data`)
+## Input Data (`/Data`)
 The simulation relies on curated datasets to reflect realistic Swedish travel and charging behaviors. Please note that the datasets included in this repository were collected in 2023-2025 when the study was performed.
 * **`deso_traveldata.csv`**: Number of registered cars and average travel distances per DeSO zone.
 * **`deso_aadt_input.csv`**: Raw traffic flow data used to determine public charger placement probability.
