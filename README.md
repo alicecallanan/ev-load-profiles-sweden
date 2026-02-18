@@ -18,6 +18,23 @@ The methodology behind these profiles is detailed in:
 
 Callanan, A., Samuelsson, O., & Marquez Fernandez, F. J. (2025). "A data-driven probabilistic framework for estimating grid impacts of EV charging at scale." International Journal of Electrical Power and Energy Systems, 172, 111204. https://doi.org/10.1016/j.ijepes.2025.111204
 
+---
+
+## Quick Start
+
+### Step 1: Generate the profiles
+`python generate_profiles.py`
+
+### Step 2: Process results and generate stats/daily curves
+`python process_results.py`
+
+
+## Requirements
+Ensure you have the following Python libraries installed:
+
+```bash
+pip install pandas numpy scipy matplotlib
+```
 
 ---
 
@@ -92,22 +109,8 @@ Outputs are saved in the /results folder:
 
 **daily_curve_run_[run_id].csv**: A typical 24-hour load profile for each zone.
 
---- 
-
-## Usage
-
-### Step 1: Generate the profiles
-`python generate_profiles.py`
-
-### Step 2: Process results and generate stats/daily curves
-`python process_results.py`
 
 
-## Requirements
-Ensure you have the following Python libraries installed:
 
-```bash
-pip install pandas numpy scipy matplotlib
-```
 
 
